@@ -1,6 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { getSmurfs } from "../actions";
+
+import Smurfs from "./Smurfs";
+import AddSmurfForm from "./AddSmurfForm";
+
 import "./App.css";
 /*
  to wire this component up you're going to need a few things.
@@ -23,11 +27,10 @@ class App extends Component {
         <Fragment>
           <h1>SMURFS! 2.0 W/ Redux</h1>
           <div className="smurfs_wrapper">
-            {this.props.characters && <Smurfs smurfs={this.props.smurfs} />}
+            {this.props.smurfs && <Smurfs smurfs={this.props.smurfs} />}
           </div>
           {this.props.error && <p className="error">{this.props.error}</p>}
-          {this.props.fetching && <h2>Just Waitin on some Smurfs...</h2>}
-          <AddSmurfForm />
+          {this.props.fetchingSmurfs && <h2>Just Waitin on some Smurfs...</h2>}
         </Fragment>
       </div>
     );
@@ -35,8 +38,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  smurfs: state.charsReducer.smurfs,
-  fetching: state.charsReducer.fetching
+  smurfs: state.smurfs,
+  fetching: state.fetchingSmurfs
 });
 
 export default connect(
