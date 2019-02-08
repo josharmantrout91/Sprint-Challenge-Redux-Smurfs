@@ -31,6 +31,7 @@ class App extends Component {
           </div>
           {this.props.error && <p className="error">{this.props.error}</p>}
           {this.props.fetchingSmurfs && <h2>Just Waitin on some Smurfs...</h2>}
+          <AddSmurfForm />
         </Fragment>
       </div>
     );
